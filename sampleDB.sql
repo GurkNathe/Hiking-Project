@@ -13,7 +13,8 @@ INSERT INTO hikes VALUES
 (3, 'Camp Long', 1.6, 240),
 (4, 'Schmitz Preserve Park', 1.7, 220),
 (5, 'Lincoln Park', 1.85, 160),
-(6, 'Westcrest Park', 2.0, 220);
+(6, 'Westcrest Park', 2.0, 220),
+(7, 'Badger Mountain-Canyon Trail', 3.25, 1195);
 
 SELECT k.*
 FROM hikes as k
