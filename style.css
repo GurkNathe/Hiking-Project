@@ -1,0 +1,103 @@
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    margin: 0;
+}
+
+
+/*------ header --------*/
+
+.header {
+    height: 100px;
+    width: 100%;
+    background-image: linear-gradient(rgba(30, 97, 74, 0.68), rgba(30, 97, 74, 0.68)), url(images/banner.png);
+    /*could probably do without the gradient*/
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
+
+/*------ search bar --------*/
+
+.search-bar {
+    overflow: hidden;
+    background-color: #e9e9e9;
+}
+
+.search-bar .search {
+    float: left;
+}
+
+.search-bar input[type=text] {
+    padding: 6px 50px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    margin-left: 6px;
+    font-size: 17px;
+    border: none;
+}
+
+.search-bar .search .button {
+    float: right;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+}
+
+.search-bar .search .button:hover {
+    background: #ccc;
+}
+
+@media screen and (max-width: 700px) {
+    .search-bar .search {
+        float: none;
+    }
+    .search-bar input[type=text],
+    .search-bar .search .button {
+        float: none;
+        display: block;
+        text-align: left;
+        width: 100%;
+        margin: 0;
+        padding: 14px;
+    }
+    .search-bar input[type=text] {
+        border: 1px solid #ccc;
+    }
+}
+
+
+/*------ search filters --------*/
+
+.options {
+    height: 100%;
+    width: 25%;
+    margin-top: 1px;
+    position: absolute;
+    background-color: #e9e9e9;
+}
+
+.options .test {
+    text-align: justify;
+}
+
+
+/*------ search results --------*/
+
+.results {
+    height: 100%;
+    width: 74.9%;
+    margin-top: 1px;
+    float: right;
+    background-color: #e9e9e9;
+}
+
+.results .trails iframe {
+    width: 74.9%;
+    height: 100%;
+    position: absolute;
+}
