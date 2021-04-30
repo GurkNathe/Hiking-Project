@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 0;
+    height: 100vh;
+
+    background-image: url("https://wallpaperaccess.com/full/1216331.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    overflow: hidden;
+}
+
+/* Adds a dark overlay to the background */
+body::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+body * {
+    z-index: 1;
+}
+
+h1 {
+    margin: 100px 0 50px 0;
+    letter-spacing: 1.5px;
+    font-size: 48px;
+    font-weight: bold;
+    color: #fff;
+}
+
+form {
+    position: relative;
+    width: 600px;
+    max-width: 100%;
+}
+
+form input {
+    border: 0;
+    border-radius: 50px;
+    font-size: 16px;
+    padding: 15px;
+    width: 100%;
+    background-color: rgb(240, 255, 250);
+    border: 0;
+    outline: none;
+}
+
+form button {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    background-color: rgb(57, 180, 112);
+    outline: none;
+    border: 0;
+    border-radius: 50px;
+    color: #fff;
+    font-size: 16px;
+    padding: 12px 30px;
+}
