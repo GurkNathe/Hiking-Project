@@ -25,6 +25,7 @@ body {
 .search-bar {
     overflow: hidden;
     background-color: #e9e9e9;
+    width: 25%
 }
 
 .search-bar .search {
@@ -91,13 +92,13 @@ body {
 .results {
     height: 100%;
     width: 74.9%;
-    margin-top: 1px;
     float: right;
     background-color: #e9e9e9;
 }
 
 .results .trails iframe {
     width: 74.9%;
-    height: 100%;
+    height: 106.5%;
+    top: 100px;
     position: absolute;
 }
