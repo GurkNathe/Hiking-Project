@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
-
 * {
     box-sizing: border-box;
 }
@@ -12,7 +11,6 @@ body {
     text-align: center;
     margin: 0;
     height: 100vh;
-
     background-image: url("https://wallpaperaccess.com/full/1216331.jpg");
     background-repeat: no-repeat;
     background-size: cover;
@@ -20,7 +18,9 @@ body {
     overflow: hidden;
 }
 
+
 /* Adds a dark overlay to the background */
+
 body::after {
     content: "";
     position: absolute;
@@ -71,4 +71,8 @@ form button {
     color: #fff;
     font-size: 16px;
     padding: 12px 30px;
+}
+
+form button:hover {
+    background-color: rgb(43, 136, 85);
 }
