@@ -32,7 +32,7 @@ function Search({ searchFunction }) {
 						<Form onSubmit={onSubmit}>
 							<Form.Control
 								type="text"
-								placeholder="Enter a WA zipcode..."
+								placeholder="Enter a zipcode..."
 								onChange={onChange}
 								value={text}
 								style={{
