@@ -12,16 +12,25 @@ function Search({ searchFunction }) {
 	// React Hook used to set text value to a constant
 	const [text, setText] = useState("");
 
+	const distances = ["Test","Test2","Test3"];
+
+	var searchFunction = (text) => {
+		var distance = distances.indexOf(text);
+		return distance;
+	}
+
 	// Calls the prop.search function with text in the form.
 	const onSubmit = (e) => {
 		e.preventDefault();
 
-		searchFunction(text);
+		var test = searchFunction(text)
+		console.log(text);
+		console.log(test);
 
 		setText("");
 	};
 
-	// Updates text state on input change
+	// Sets search bar text to current typed information
 	const onChange = (e) => setText(e.target.value);
 
 	return (
