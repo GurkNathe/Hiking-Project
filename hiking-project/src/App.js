@@ -6,6 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import HikingNavbar from "./components/HikingNavbar";
 import Search from "./components/Search";
 import TrailItem from "./components/TrailItem";
+import Line from "./components/Line";
 
 const App = () => {
 	const placeholderSearchFunction = (text) => {
@@ -17,7 +18,10 @@ const App = () => {
 			<HikingNavbar></HikingNavbar>
 			<Container>
 				<Search searchTrails={placeholderSearchFunction}></Search>
-			</Container><br></br>
+			</Container>
+			<br></br>
+			<Line></Line>
+			<br></br>
 			<Container>
 				<TrailItem elevation={200} name={"test"} distance={500}></TrailItem>
 			</Container>

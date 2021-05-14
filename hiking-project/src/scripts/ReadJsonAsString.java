@@ -7,12 +7,15 @@ import java.util.regex.*;
 public class ReadJsonAsString {
 
     public static void main(String[] args) throws Exception {
-        String file = "./wta-parks-data.json";
+        String file = "./trails.json";
         String json = readFileAsString(file);
-        json = json.replaceAll(Pattern.quote(", {\"elevation\""),",\n{\"elevation\"");
+        json = json.replaceAll(Pattern.quote("{\"lat\": \""),"{\"lat\": ");
+        json = json.replaceAll(Pattern.quote("\", \"lon\":"),", \"lon\":");
+        json = json.replaceAll(Pattern.quote("\"lon\": \""),"\"lon\": ");
+        json = json.replaceAll(Pattern.quote("\"}, \"length\""),"}, \"length\"");
 
         try {
-            FileWriter myWriter = new FileWriter("filename.txt");
+            FileWriter myWriter = new FileWriter("trail.json");
             myWriter.write(json);
             myWriter.close();
             System.out.println("Successfully wrote to the file.");

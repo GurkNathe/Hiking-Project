@@ -6,26 +6,32 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import { FaSearch } from "react-icons/fa";
 
+import getDistances from "../scripts/getDistances.js";
+import trail from "../scripts/trail.json";
+
 // A search function is passed in -- eventually by the context, but for now, it is handled as a prop.
 // It is destructured in the parameters, denoted by {}.
 function Search({ searchFunction }) {
 	// React Hook used to set text value to a constant
 	const [text, setText] = useState("");
 
-	const distances = ["Test","Test2","Test3"];
-
-	var searchFunction = (text) => {
-		var distance = distances.indexOf(text);
-		return distance;
-	}
-
 	// Calls the prop.search function with text in the form.
 	const onSubmit = (e) => {
 		e.preventDefault();
+		/*Test stuff
+		const philly = { "lat": 39.9526, "lon": -75.1652 }
+		const nyc = { lat: 40.7128, lon: -74.0060 }
+		const losAngeles = { "lat": 34.0522, "lon": -118.2437 }
+		var dis = getHaversineDistance({ lat: 39.9526, lon: -75.1652 }, data);
+		var stuff = text;*/
 
-		var test = searchFunction(text)
 		console.log(text);
-		console.log(test);
+
+		var data = JSON.parse(text);
+		console.log(data);
+		
+		var distances = getDistances(trail, data);
+		console.log(distances);
 
 		setText("");
 	};
