@@ -9,10 +9,15 @@ const Home = () => {
 	const hikingContext = useContext(HikingContext);
 	const { getTrails } = hikingContext;
 
+	const userStyle = {
+		borderBottom: "2px solid #eee",
+		backgroundColor: "#eee",
+	};
+
 	return (
 		<div>
-			<Search searchFunction={getTrails}></Search>
-			<br></br>
+			<Search searchFunction={getTrails} style={{ userStyle }}></Search>
+			<hr />
 			<Trails></Trails>
 		</div>
 	);
