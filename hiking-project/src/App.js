@@ -1,31 +1,30 @@
-import React, { Fragment } from "react";
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import { Container} from "react-bootstrap";
+// Components
+import HikingNavbar from "./components/HikingNavbar";
+import HikingState from "./context/hiking/HikingState";
+
+// React-Bootstrap Components
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import HikingNavbar from "./components/HikingNavbar";
-import Search from "./components/Search";
-import TrailItem from "./components/TrailItem";
-import Line from "./components/Line";
+// Routes
+import Home from "./pages/Home";
+import About from "./pages/About";
 
 const App = () => {
-	const placeholderSearchFunction = (text) => {
-		console.log(text);
-	};
-
 	return (
-		<Fragment>
-			<HikingNavbar></HikingNavbar>
-			<Container>
-				<Search searchTrails={placeholderSearchFunction}></Search>
-			</Container>
-			<br></br>
-			<Line></Line>
-			<br></br>
-			<Container>
-				<TrailItem elevation={200} name={"test"} distance={500}></TrailItem>
-			</Container>
-		</Fragment>
+		<HikingState>
+			<Router>
+				<div>
+					<HikingNavbar></HikingNavbar>
+					<Switch>
+						<Route exact path="/" component={Home}></Route>
+						<Route exact path="/about" component={About}></Route>
+					</Switch>
+				</div>
+			</Router>
+		</HikingState>
 	);
 };
 
