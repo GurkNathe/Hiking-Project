@@ -15,9 +15,6 @@ const HikingState = (props) => {
 
 	const [state, dispatch] = useReducer(HikingReducer, initialState);
 
-	// placeholder variable
-	const data = 123;
-
 	// Get trails from database
 	const getTrails = (query) => {
 		setLoading();
@@ -39,9 +36,23 @@ const HikingState = (props) => {
 	const getTrail = (query) => {
 		setLoading();
 
-		// query database for single trail
-
 		// get data
+		const data = {
+			elevation: { "Highest Point": "120 ft.", Gain: "120 ft." },
+			name: "Luther Burbank Park",
+			url: "http://www.wta.org/go-hiking/hikes/luther-burbank-park",
+			coordinates: { lat: 47.589, lon: -122.227 },
+			length: "3.0 miles",
+			requiredPass: "None",
+			features: [
+				"Wildflowers/Meadows",
+				"Dogs allowed on leash",
+				"Good for kids",
+				"Lakes",
+				"Fall foliage",
+				"Coast",
+			],
+		};
 
 		// dispatch GET_TRAIL to reducer with data
 		dispatch({

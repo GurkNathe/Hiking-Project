@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-import { Container, Row, Col, FormGroup, FormControl, Button, InputGroup } from "react-bootstrap";
+import { Container, Form, FormGroup, FormControl, Button, InputGroup } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import { FaSearch } from "react-icons/fa";
@@ -24,7 +24,8 @@ function Search({ searchFunction }) {
 
 	return (
 		<Container>
-			<FormGroup inline onSubmit={onSubmit}>
+			<FormGroup inline>
+				<Form onSubmit={onSubmit}>
 				<InputGroup>
 					<FormControl
 						type="text"
@@ -47,6 +48,7 @@ function Search({ searchFunction }) {
 						<FaSearch className="align-center mb-1"></FaSearch>
 					</Button>
 				</InputGroup>
+				</Form>
 			</FormGroup>
 		</Container>
 	);
