@@ -11,6 +11,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // Routes
 import Home from "./pages/Home";
 import About from "./pages/About";
+import Trail from "./pages/Trail";
 
 const App = () => {
 	return (
@@ -21,6 +22,7 @@ const App = () => {
 					<Switch>
 						<Route exact path="/" component={Home}></Route>
 						<Route exact path="/about" component={About}></Route>
+						<Route exact path="/trails/:param" component={Trail}></Route>
 					</Switch>
 				</div>
 			</Router>
