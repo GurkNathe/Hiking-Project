@@ -26,28 +26,28 @@ function Search({ searchFunction }) {
 		<Container>
 			<FormGroup inline>
 				<Form onSubmit={onSubmit}>
-				<InputGroup>
-					<FormControl
-						type="text"
-						placeholder="Enter a zipcode..."
-						onChange={onChange}
-						value={text}
-						style={{
-							borderBottomRightRadius: "0",
-							borderTopRightRadius: "0",
-						}}
-					></FormControl>
-					<Button
-						variant="primary"
-						onClick={onSubmit}
-						style={{
-							borderBottomLeftRadius: "0",
-							borderTopLeftRadius: "0",
-						}}
-					>
-						<FaSearch className="align-center mb-1"></FaSearch>
-					</Button>
-				</InputGroup>
+					<InputGroup>
+						<FormControl
+							type="text"
+							placeholder="Enter a zipcode..."
+							onChange={onChange}
+							value={text}
+							style={{
+								borderBottomRightRadius: "0",
+								borderTopRightRadius: "0",
+							}}
+						></FormControl>
+						<Button
+							variant="primary"
+							onClick={onSubmit}
+							style={{
+								borderBottomLeftRadius: "0",
+								borderTopLeftRadius: "0",
+							}}
+						>
+							<FaSearch className="align-center mb-1"></FaSearch>
+						</Button>
+					</InputGroup>
 				</Form>
 			</FormGroup>
 		</Container>
