@@ -6,8 +6,7 @@ import Trails from "../components/Trails";
 
 const Home = () => {
 	// Instantiate context
-	const hikingContext = useContext(HikingContext);
-	const { getTrails } = hikingContext;
+	const { getTrails } = useContext(HikingContext);
 
 	const userStyle = {
 		borderBottom: "2px solid #eee",

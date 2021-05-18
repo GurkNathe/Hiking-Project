@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { Container, Form, FormGroup, FormControl, Button, InputGroup } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import { FaSearch } from "react-icons/fa";
 
@@ -23,10 +24,10 @@ function Search({ searchFunction }) {
 
 	return (
 		<Container>
-			<Row>
-				<Col className="p-0">
-					<Form onSubmit={onSubmit}>
-						<Form.Control
+			<FormGroup inline>
+				<Form onSubmit={onSubmit}>
+					<InputGroup>
+						<FormControl
 							type="text"
 							placeholder="Enter a zipcode..."
 							onChange={onChange}
@@ -35,22 +36,20 @@ function Search({ searchFunction }) {
 								borderBottomRightRadius: "0",
 								borderTopRightRadius: "0",
 							}}
-						></Form.Control>
-					</Form>
-				</Col>
-				<Col className="p-0" md="auto">
-					<Button
-						variant="primary"
-						onClick={onSubmit}
-						style={{
-							borderBottomLeftRadius: "0",
-							borderTopLeftRadius: "0",
-						}}
-					>
-						<FaSearch className="align-center mb-1"></FaSearch>
-					</Button>
-				</Col>
-			</Row>
+						></FormControl>
+						<Button
+							variant="primary"
+							onClick={onSubmit}
+							style={{
+								borderBottomLeftRadius: "0",
+								borderTopLeftRadius: "0",
+							}}
+						>
+							<FaSearch className="align-center mb-1"></FaSearch>
+						</Button>
+					</InputGroup>
+				</Form>
+			</FormGroup>
 		</Container>
 	);
 }
