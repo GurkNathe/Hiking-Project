@@ -9,8 +9,7 @@ import { Spinner, Container } from "react-bootstrap";
 
 const Trails = () => {
 	// Instantiate context
-	const hikingContext = useContext(HikingContext);
-	const { trails, loading } = hikingContext;
+	const { trails, loading } = useContext(HikingContext);
 
 	if (loading) {
 		return (
