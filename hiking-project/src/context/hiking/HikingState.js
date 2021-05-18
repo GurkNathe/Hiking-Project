@@ -4,7 +4,7 @@ import HikingContext from "./hikingContext";
 
 import { GET_TRAILS, GET_TRAIL, SET_LOADING } from "../types";
 
-import trails_JSON from "../../scripts/";
+import trails_JSON from "../../scripts/trails";
 
 const HikingState = (props) => {
 	const initialState = {
