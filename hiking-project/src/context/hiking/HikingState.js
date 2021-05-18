@@ -23,7 +23,7 @@ const HikingState = (props) => {
 		console.log(query);
 
 		// get data
-		var data = Trail.splice(0,25);
+		var data = Trail.slice(0,25);
 
 		// dispatch GET_TRAILS to reducer with data
 		dispatch({
