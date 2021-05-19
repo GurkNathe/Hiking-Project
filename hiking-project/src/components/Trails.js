@@ -28,8 +28,9 @@ const Trails = () => {
 					<TrailItem
 						elevation={trail.elevation}
 						name={trail.name}
-						distance={trail.distance}
+						haversine={trail.haversine}
 						length={trail.length}
+						idx={idx}
 						key={idx}
 					></TrailItem>
 				))}

@@ -15,21 +15,23 @@ const Trail = () => {
 	// useParams retrieves the trail name from the URL parameters.
 	let { param } = useParams();
 
+	// TODO ---
+	// Trail.js needs to handle the user routing themselves to the page (entering the URL manually), so we can not rely on context to be populated.
+	//     - If context is populated, search through sortedHikes.
+	//     - Else, search through all of trails.json for the name of the hike in the URL
+
 	// On mount, calls getTrail with the param of the hike in the url.
 	useEffect(() => {
 		if (param) {
 			getTrail(param);
 		} else {
-			console.error("No trail found from URL params");
+			console.error("No trail found from URL parameters");
 		}
 	}, []);
 
 	if (!loading) {
 		let { elevation, name, url, coordinates, length, features } =
 			hikingContext.trail;
-
-		let gain = elevation["Gain"];
-		let highestPoint = elevation["Highest Point"];
 
 		return (
 			<Container>
@@ -46,32 +48,32 @@ const Trail = () => {
 					</Col>
 					<Col>
 						<span>Highest Point</span> <br />
-						<span style={{ fontWeight: "bold" }}>{gain}</span>
+						<span style={{ fontWeight: "bold" }}>123</span>
 					</Col>
 					<Col>
 						<span>Gain</span>
 						<br />
-						<span style={{ fontWeight: "bold" }}>{highestPoint}</span>
+						<span style={{ fontWeight: "bold" }}>123</span>
 					</Col>
 				</Row>
 
-				<Carousel className="mt-4 mb-4">
+				<Carousel className="mt-4 mb-4" interval={null}>
 					<Carousel.Item>
 						<img
 							className="d-block w-100"
-							src="https://picsum.photos/id/1/500/200"
+							src="https://picsum.photos/id/10/500/200"
 						></img>
 					</Carousel.Item>
 					<Carousel.Item>
 						<img
 							className="d-block w-100"
-							src="https://picsum.photos/id/1/500/200"
+							src="https://picsum.photos/id/10/500/200"
 						></img>
 					</Carousel.Item>
 					<Carousel.Item>
 						<img
 							className="d-block w-100"
-							src="https://picsum.photos/id/1/500/200"
+							src="https://picsum.photos/id/10/500/200"
 							style={{ maxWidth: "100%", maxHeight: "100%" }}
 						></img>
 					</Carousel.Item>
@@ -92,8 +94,8 @@ const Trail = () => {
 						culpa quos, autem sit sed delectus iure molestias.
 					</Col>
 
-					<Col>
-						<Button variant="primary" block>
+					<Col style={{ alignItems: "stretch" }}>
+						<Button variant="primary" block href="/">
 							Button 1
 						</Button>
 						<Button variant="primary" block>
@@ -107,10 +109,8 @@ const Trail = () => {
 			</Container>
 		);
 	} else {
-		return <h1>yuh</h1>;
+		return <h1>loading...</h1>;
 	}
 };
-
-// TODO - Ensure that data is loaded before creating components with trail data. Else, undefined errors are thrown and everything is terrible.
 
 export default Trail;

@@ -14,6 +14,7 @@ const HikingState = (props) => {
 	};
 
 	const [state, dispatch] = useReducer(HikingReducer, initialState);
+	let sortedHikes = [];
 
 	// Import Trails JSON file
 	let trails_JSON = require("../../scripts/trails.json");
@@ -29,7 +30,7 @@ const HikingState = (props) => {
 		const latitude = 47.6;
 		const longitude = -122;
 
-		let sortedHikes = sortByHaversine(trails_JSON, latitude, longitude);
+		sortedHikes = sortByHaversine(trails_JSON, latitude, longitude);
 
 		// get data
 		const data = sortedHikes.slice(0, 25);
@@ -42,7 +43,7 @@ const HikingState = (props) => {
 	};
 
 	// Get individual trail from database
-	const getTrail = (query) => {
+	const getTrail = (key) => {
 		setLoading();
 
 		// get data
@@ -62,6 +63,10 @@ const HikingState = (props) => {
 				"Coast",
 			],
 		};
+
+		// Retrieve key of selected trail
+		// Set const data equal to sortedTrails[key]
+		// Dispatch that trail
 
 		// dispatch GET_TRAIL to reducer with data
 		dispatch({

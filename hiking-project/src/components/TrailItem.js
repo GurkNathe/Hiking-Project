@@ -9,22 +9,28 @@ elevation = elevation gain
   distance = distance from input location
   length = length of trail
   */
-function TrailItem({ elevation, name, distance, length }) {
+function TrailItem({ elevation, name, haversine, length }) {
 	const onClick = () => {
 		console.log(elevation);
 		console.log(name);
-		console.log(distance);
+		console.log(haversine);
 	};
+
+	// Rounds the haversine
+	const distance = Number.parseFloat(haversine).toFixed(2);
 
 	return (
 		<Card
-			as="a"
 			onClick={onClick}
 			style={{ cursor: "pointer" }}
 			className="mb-3"
+			href="/trails/123"
 		>
 			<Card.Body>
 				<Card.Title>{name}</Card.Title>
+				<Card.Subtitle className="mb-2 text-muted">
+					{distance} Miles
+				</Card.Subtitle>
 				<Card.Text>
 					Highest Point: {elevation["Highest Point"]} <br></br> Length: {length}
 				</Card.Text>
