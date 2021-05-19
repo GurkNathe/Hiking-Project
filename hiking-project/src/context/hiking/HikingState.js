@@ -30,10 +30,13 @@ const HikingState = (props) => {
 		const latitude = 47.6;
 		const longitude = -122;
 
+		// Invoke sortByHaversine and return an array of sorted hikes.
 		sortedHikes = sortByHaversine(trails_JSON, latitude, longitude);
 
 		// get data
-		const data = sortedHikes.slice(0, 25);
+		const data = sortedHikes.slice(0, 20);
+
+		// TODO eventually -- load more data when bottom of page reached
 
 		// dispatch GET_TRAILS to reducer with data
 		dispatch({

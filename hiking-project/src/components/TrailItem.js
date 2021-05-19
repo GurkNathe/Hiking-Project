@@ -19,6 +19,8 @@ function TrailItem({ elevation, name, haversine, length }) {
 	// Rounds the haversine
 	const distance = Number.parseFloat(haversine).toFixed(2);
 
+	const link = "/trails/" + name;
+
 	return (
 		<Card
 			onClick={onClick}
@@ -26,7 +28,7 @@ function TrailItem({ elevation, name, haversine, length }) {
 			className="mb-3"
 			href="/trails/123"
 		>
-			<Card.Body>
+			<Card.Body as="a" href={link}>
 				<Card.Title>{name}</Card.Title>
 				<Card.Subtitle className="mb-2 text-muted">
 					{distance} Miles
