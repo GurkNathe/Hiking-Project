@@ -1,5 +1,3 @@
-import hikes from "./trails";
-
 function haversineGen() {
 	var radians = Array.prototype.map.call(arguments, function (deg) {
 		return (deg / 180.0) * Math.PI;
@@ -28,22 +26,21 @@ function compare(a, b) {
 	return 0;
 }
 
-var sortByHaversine = function (startLat, startLon) {
-	// var lat, lon, haversine, hike;
-	// var hikesByDistance = [];
-	// for (let key in hikes) {
-	// 	lat = hikes[key].coordinates.lat;
-	// 	lon = hikes[key].coordinates.lon;
-	// 	if (lat != null && lon != null) {
-	// 		haversine = haversineGen(startLat, startLon, lat, lon);
-	// 		hike = hikes[key];
-	// 		hike["haversine"] = haversine;
-	// 		hikesByDistance.push(hike);
-	// 	}
-	// }
-	// hikesByDistance = hikesByDistance.sort(compare);
-	// return hikesByDistance;
-	console.log("hello");
+var sortByHaversine = function (hikes, startLat, startLon) {
+	var lat, lon, haversine, hike;
+	var hikesByDistance = [];
+	for (let key in hikes) {
+		lat = hikes[key].coordinates.lat;
+		lon = hikes[key].coordinates.lon;
+		if (lat != null && lon != null) {
+			haversine = haversineGen(startLat, startLon, lat, lon);
+			hike = hikes[key];
+			hike["haversine"] = haversine;
+			hikesByDistance.push(hike);
+		}
+	}
+	hikesByDistance = hikesByDistance.sort(compare);
+	return hikesByDistance;
 };
 
 export default sortByHaversine;

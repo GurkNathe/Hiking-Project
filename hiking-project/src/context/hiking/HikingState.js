@@ -2,11 +2,9 @@ import React, { useReducer } from "react";
 import HikingReducer from "./hikingReducer";
 import HikingContext from "./hikingContext";
 
-import Trail from "../../scripts/trail.json";
+import sortByHaversine from "../../scripts/hikeDataDistanceSort";
 
 import { GET_TRAILS, GET_TRAIL, SET_LOADING } from "../types";
-
-import trails_JSON from "../../scripts/trails";
 
 const HikingState = (props) => {
 	const initialState = {
@@ -17,6 +15,9 @@ const HikingState = (props) => {
 
 	const [state, dispatch] = useReducer(HikingReducer, initialState);
 
+	// Import Trails JSON file
+	let trails_JSON = require("../../scripts/trails.json");
+
 	// Get trails from database
 	const getTrails = (query) => {
 		setLoading();
@@ -24,8 +25,14 @@ const HikingState = (props) => {
 		// query database
 		console.log(query);
 
+		// Placeholder lat/lon values. In the future, these will be calculated from the query given.
+		const latitude = 47.6;
+		const longitude = -122;
+
+		let sortedHikes = sortByHaversine(trails_JSON, latitude, longitude);
+
 		// get data
-		var data = Trail.slice(0,25);
+		const data = sortedHikes.slice(0, 25);
 
 		// dispatch GET_TRAILS to reducer with data
 		dispatch({

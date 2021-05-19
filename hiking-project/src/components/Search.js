@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-import { Container, Form, FormGroup, FormControl, Button, InputGroup } from "react-bootstrap";
+import {
+	Container,
+	Form,
+	FormGroup,
+	FormControl,
+	Button,
+	InputGroup,
+} from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import { FaSearch } from "react-icons/fa";
@@ -24,7 +31,7 @@ function Search({ searchFunction }) {
 
 	return (
 		<Container>
-			<FormGroup inline>
+			<FormGroup inline="true">
 				<Form onSubmit={onSubmit}>
 					<InputGroup>
 						<FormControl
