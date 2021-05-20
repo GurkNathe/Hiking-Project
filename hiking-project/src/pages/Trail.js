@@ -15,30 +15,32 @@ const Trail = () => {
 	// useParams retrieves the trail name from the URL parameters.
 	let { param } = useParams();
 
-	// TODO ---
-	// Trail.js needs to handle the user routing themselves to the page (entering the URL manually), so we can not rely on context to be populated.
-	//     - If context is populated, search through sortedHikes.
-	//     - Else, search through all of trails.json for the name of the hike in the URL
-
 	// On mount, calls getTrail with the param of the hike in the url.
 	useEffect(() => {
 		if (param) {
 			try {
 				getTrail(param);
 			} catch (error) {
-				console.error(error.message);
+				// TODO - Error Handling
 				// Trail is not in database.
-				// Reroute user to <not found> page
+				// Reroute user to <trail not found> page
+				console.error(error.message);
 			}
 		} else {
-			console.error("No trail found from URL parameters");
-			// Route user to <not found> page
+			console.error("No URL parameters given...");
+			// Route user to <trail not found> page
 		}
 	}, []);
 
-	if (!loading) {
-		let { elevation, name, url, coordinates, length, features } =
+	if (!loading && !isEmpty(hikingContext.trail)) {
+		const { elevation, length, name, url, coordinates, features } =
 			hikingContext.trail;
+
+		// Nullish coalescing. If left side is null or undefined, return right side
+		const highestPoint = elevation["Highest Point"] ?? "N/A";
+		const gain = elevation["Gain"] ?? "N/A";
+
+		// TODO - handle length not displaying properly
 
 		return (
 			<Container>
@@ -53,11 +55,11 @@ const Trail = () => {
 						</Col>
 						<Col className="d-flex-inline text-right">
 							<span>Highest Point</span> <br />
-							<span style={{ fontWeight: "bold" }}>123</span>
+							<span style={{ fontWeight: "bold" }}>{highestPoint}</span>
 						</Col>
 						<Col className="d-flex-inline text-right">
 							<span>Gain</span> <br />
-							<span style={{ fontWeight: "bold" }}>123</span>
+							<span style={{ fontWeight: "bold" }}>{gain}</span>
 						</Col>
 					</Col>
 				</Row>
@@ -117,5 +119,22 @@ const Trail = () => {
 		return <h1>loading...</h1>;
 	}
 };
+
+// Check if an object is empty.
+const isEmpty = (obj) => {
+	let value = false;
+
+	if (typeof obj === "undefined") {
+		value = true;
+	} else if (obj == null) {
+		value = true;
+	} else if (Object.keys(obj).length === 0) {
+		value = true;
+	}
+
+	return value;
+};
+
+// TODO - ensuring object is not empty. double rendering. object is empty at first, then re render creates proper object?..
 
 export default Trail;
