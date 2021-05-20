@@ -27,7 +27,8 @@ const HikingState = (props) => {
 		console.log(query);
 
 		// Placeholder lat/lon values. In the future, these will be calculated from the query given.
-		const latitude = 47.6;
+		// const latitude = 47.6;
+		const latitude = query;
 		const longitude = -122;
 
 		// Invoke sortByHaversine and return an array of sorted hikes.
@@ -46,36 +47,20 @@ const HikingState = (props) => {
 	};
 
 	// Get individual trail from database
-	const getTrail = (key) => {
+	const getTrail = (query) => {
 		setLoading();
 
-		// get data
-		const data = {
-			elevation: { "Highest Point": "120 ft.", Gain: "120 ft." },
-			name: "Luther Burbank Park",
-			url: "http://www.wta.org/go-hiking/hikes/luther-burbank-park",
-			coordinates: { lat: 47.589, lon: -122.227 },
-			length: "3.0 miles",
-			requiredPass: "None",
-			features: [
-				"Wildflowers/Meadows",
-				"Dogs allowed on leash",
-				"Good for kids",
-				"Lakes",
-				"Fall foliage",
-				"Coast",
-			],
-		};
+		// Search by name in JSON file for trail
+		const data = trails_JSON.find((element) => element.name === query);
 
-		// Retrieve key of selected trail
-		// Set const data equal to sortedTrails[key]
-		// Dispatch that trail
-
-		// dispatch GET_TRAIL to reducer with data
-		dispatch({
-			type: GET_TRAIL,
-			payload: data,
-		});
+		if (data) {
+			dispatch({
+				type: GET_TRAIL,
+				payload: data,
+			});
+		} else {
+			throw new Error("Trail not found in database!");
+		}
 	};
 
 	// Set loading

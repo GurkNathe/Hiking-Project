@@ -34,7 +34,8 @@ function TrailItem({ elevation, name, haversine, length }) {
 					{distance} Miles
 				</Card.Subtitle>
 				<Card.Text>
-					Highest Point: {elevation["Highest Point"]} <br></br> Length: {length}
+					Highest Point: {elevation["Highest Point"] ?? "N/A"} <br></br> Length:{" "}
+					{length ?? "N/A"}
 				</Card.Text>
 			</Card.Body>
 		</Card>
@@ -43,7 +44,7 @@ function TrailItem({ elevation, name, haversine, length }) {
 
 TrailItem.propTypes = {
 	name: PropTypes.string.isRequired,
-	distance: PropTypes.string.isRequired,
+	haversine: PropTypes.number.isRequired,
 	elevation: PropTypes.object,
 };
 

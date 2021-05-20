@@ -23,9 +23,16 @@ const Trail = () => {
 	// On mount, calls getTrail with the param of the hike in the url.
 	useEffect(() => {
 		if (param) {
-			getTrail(param);
+			try {
+				getTrail(param);
+			} catch (error) {
+				console.error(error.message);
+				// Trail is not in database.
+				// Reroute user to <not found> page
+			}
 		} else {
 			console.error("No trail found from URL parameters");
+			// Route user to <not found> page
 		}
 	}, []);
 
@@ -35,25 +42,23 @@ const Trail = () => {
 
 		return (
 			<Container>
-				<Row>
-					<Col>
+				<Row className="">
+					<Col xs={6}>
 						<h1>{name}</h1>
 					</Col>
-				</Row>
-				<Row>
-					<Col>
-						<span>Length</span>
-						<br />
-						<span style={{ fontWeight: "bold" }}>{length}</span>
-					</Col>
-					<Col>
-						<span>Highest Point</span> <br />
-						<span style={{ fontWeight: "bold" }}>123</span>
-					</Col>
-					<Col>
-						<span>Gain</span>
-						<br />
-						<span style={{ fontWeight: "bold" }}>123</span>
+					<Col className="d-flex justify-content-end">
+						<Col className="d-flex-inline text-right">
+							<span>Length</span> <br />
+							<span style={{ fontWeight: "bold" }}>{length}</span>
+						</Col>
+						<Col className="d-flex-inline text-right">
+							<span>Highest Point</span> <br />
+							<span style={{ fontWeight: "bold" }}>123</span>
+						</Col>
+						<Col className="d-flex-inline text-right">
+							<span>Gain</span> <br />
+							<span style={{ fontWeight: "bold" }}>123</span>
+						</Col>
 					</Col>
 				</Row>
 
