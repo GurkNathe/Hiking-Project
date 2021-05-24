@@ -35,7 +35,7 @@ const HikingState = (props) => {
 		var location = axios.get("https://maps.googleapis.com/maps/api/geocode/json", {
 			params: {
 				address: encodedAddress,
-				key: "AIzaSyCA6JrqRskg3S0_4l9-IxsfniZr3tLZiIk"
+				key: "THE_API_KEY"
 			}
 		})
 		.then(function(response){
