@@ -26,25 +26,45 @@ const HikingState = (props) => {
 		// query database
 		console.log(query);
 
-		// Placeholder lat/lon values. In the future, these will be calculated from the query given.
-		// const latitude = 47.6;
-		const latitude = query;
-		const longitude = -122;
+		//encodes address searched (for format reasons)
+		var encodedAddress = encodeURI(query);
+		console.log(encodedAddress);
 
-		// Invoke sortByHaversine and return an array of sorted hikes.
-		sortedHikes = sortByHaversine(trails_JSON, latitude, longitude);
+		const axios = require('axios').default;
 
-		// get data
-		const data = sortedHikes.slice(0, 20);
+		var location = axios.get("https://maps.googleapis.com/maps/api/geocode/json", {
+			params: {
+				address: encodedAddress,
+				key: "AIzaSyCA6JrqRskg3S0_4l9-IxsfniZr3tLZiIk"
+			}
+		})
+		.then(function(response){
+			//gets latitude and longitude of searched place
+			let latitude = response.data.results[0].geometry.location.lat;
+			let longitude = response.data.results[0].geometry.location.lng;
+			console.log(latitude);
+			console.log(longitude);
+			
+			// Invoke sortByHaversine and return an array of sorted hikes.
+			sortedHikes = sortByHaversine(trails_JSON, latitude, longitude);
+			console.log(sortedHikes);
 
-		// TODO eventually -- load more data when bottom of page reached
+			// get data
+			const data = sortedHikes.slice(0, 20);
+			console.log(data);
 
-		// dispatch GET_TRAILS to reducer with data
-		dispatch({
-			type: GET_TRAILS,
-			payload: data,
-		});
-	};
+			// TODO eventually -- load more data when bottom of page reached
+
+			// dispatch GET_TRAILS to reducer with data
+			dispatch({
+				type: GET_TRAILS,
+				payload: data,
+			});
+		})
+		.catch(function(error){
+			console.log(error);
+		})
+	}
 
 	// Get individual trail from database
 	const getTrail = (query) => {
