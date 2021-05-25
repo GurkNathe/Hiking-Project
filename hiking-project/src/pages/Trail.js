@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 // Components
 import HikingContext from "../context/hiking/hikingContext";
@@ -33,8 +33,10 @@ const Trail = () => {
 	}, []);
 
 	if (!loading && !isEmpty(hikingContext.trail)) {
-		const { elevation, length, name, url, coordinates, features } =
-			hikingContext.trail;
+		// const { elevation, length, name, url, coordinates, features } =
+		// 	hikingContext.trail;
+
+		const { elevation, length, name } = hikingContext.trail;
 
 		// Nullish coalescing. If left side is null or undefined, return right side
 		const highestPoint = elevation["Highest Point"] ?? "N/A";
@@ -81,7 +83,6 @@ const Trail = () => {
 						<img
 							className="d-block w-100"
 							src="https://picsum.photos/id/10/500/200"
-							style={{ maxWidth: "100%", maxHeight: "100%" }}
 						></img>
 					</Carousel.Item>
 				</Carousel>

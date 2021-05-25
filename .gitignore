@@ -1,2 +1,8 @@
 hiking-project/node_modules/.cache/
 .eslintcache
+/node_modules
+node_modules/
+node_modules
+.node_modules
+hiking-project/node_modules/
+.env

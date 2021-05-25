@@ -1,4 +1,6 @@
 import React, { useReducer } from "react";
+import axios from "axios";
+
 import HikingReducer from "./hikingReducer";
 import HikingContext from "./hikingContext";
 
@@ -20,38 +22,26 @@ const HikingState = (props) => {
 	let trails_JSON = require("../../scripts/trails.json");
 
 	// Get trails from database
-	const getTrails = (query) => {
+	const getTrails = async (query) => {
 		setLoading();
 
-		// query database
-		console.log(query);
+		try {
+			//encodes address searched (for format reasons)
+			const encodedAddress = encodeURI(query);
 
-		//encodes address searched (for format reasons)
-		var encodedAddress = encodeURI(query);
-		console.log(encodedAddress);
+			// Make request to Google Maps API
+			const res = await axios.get(
+				`https://maps.googleapis.com/maps/api/geocode/json?address=${encodedAddress}&key=${googleApiKey}`
+			);
 
-		const axios = require('axios').default;
+			// Destructure latitude and longitude from JSON
+			const { lat, lng } = res.data.results[0].geometry.location;
 
-		var location = axios.get("https://maps.googleapis.com/maps/api/geocode/json", {
-			params: {
-				address: encodedAddress,
-				key: "THE_API_KEY"
-			}
-		})
-		.then(function(response){
-			//gets latitude and longitude of searched place
-			let latitude = response.data.results[0].geometry.location.lat;
-			let longitude = response.data.results[0].geometry.location.lng;
-			console.log(latitude);
-			console.log(longitude);
-			
 			// Invoke sortByHaversine and return an array of sorted hikes.
-			sortedHikes = sortByHaversine(trails_JSON, latitude, longitude);
-			console.log(sortedHikes);
+			sortedHikes = sortByHaversine(trails_JSON, lat, lng);
 
 			// get data
 			const data = sortedHikes.slice(0, 20);
-			console.log(data);
 
 			// TODO eventually -- load more data when bottom of page reached
 
@@ -60,11 +50,10 @@ const HikingState = (props) => {
 				type: GET_TRAILS,
 				payload: data,
 			});
-		})
-		.catch(function(error){
+		} catch (error) {
 			console.log(error);
-		})
-	}
+		}
+	};
 
 	// Get individual trail from database
 	const getTrail = (query) => {
