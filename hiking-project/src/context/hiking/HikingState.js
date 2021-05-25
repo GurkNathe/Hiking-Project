@@ -8,6 +8,18 @@ import sortByHaversine from "../../scripts/hikeDataDistanceSort";
 
 import { GET_TRAILS, GET_TRAIL, SET_LOADING } from "../types";
 
+// TODO - use import syntax
+require("dotenv").config({ path: "../../../.env" });
+
+let googleApiKey;
+
+// Checks if environment is production or development
+if (process.env.NODE_ENV !== "production") {
+	googleApiKey = process.env.REACT_APP_GOOGLE_API_KEY;
+} else {
+	googleApiKey = process.env.GOOGLE_API_KEY;
+}
+
 const HikingState = (props) => {
 	const initialState = {
 		trails: [],
