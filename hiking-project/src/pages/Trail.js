@@ -88,7 +88,7 @@ const Trail = () => {
 				</Carousel>
 
 				<Row>
-					<Col xs={8}>
+					<Col xs={8} style={{color:"#ffffff"}}>
 						Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum est
 						beatae ducimus ab, doloremque quasi facere fugiat architecto sit,
 						reprehenderit illo eligendi blanditiis, quod eveniet. Itaque illo
@@ -114,6 +114,7 @@ const Trail = () => {
 						</Button>
 					</Col>
 				</Row>
+				<Row style={{paddingBottom:"25px"}}></Row>
 			</Container>
 		);
 	} else {
