@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 
 import { Container } from "react-bootstrap";
 
+import BackdropFilter from "react-backdrop-filter";
+
 import HikingContext from "../context/hiking/hikingContext";
 import Search from "../components/Search";
 import Trails from "../components/Trails";
@@ -14,16 +16,20 @@ const Home = () => {
 
 	return (
 		<div>
-			<Container
-				className="pt-4 pb-4 border-secondary"
-				style={{
-					backdropFilter: "blur(2px)",
-					WebkitBackdropFilter: "blur(2px)",
+			<BackdropFilter
+				className="bluredForm"
+				filter={"blur(10px)"}
+				html2canvasOpts={{
+					allowTaint: true,
 				}}
-				fluid
+				onDraw={() => {
+					console.log("Rendered !");
+				}}
 			>
-				<Search searchFunction={getTrails}></Search>
-			</Container>
+				<Container className="pt-4 pb-4" fluid>
+					<Search searchFunction={getTrails}></Search>
+				</Container>
+			</BackdropFilter>
 			<hr className="mt-0" />
 			<Trails></Trails>
 		</div>
