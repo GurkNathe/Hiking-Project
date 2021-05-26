@@ -9,6 +9,7 @@ import {
 	Button,
 	InputGroup,
 } from "react-bootstrap";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import { FaSearch } from "react-icons/fa";
