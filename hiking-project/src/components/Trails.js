@@ -5,11 +5,11 @@ import HikingContext from "../context/hiking/hikingContext";
 import TrailItem from "../components/TrailItem";
 
 // React Bootstrap Components
-import { Spinner, Container } from "react-bootstrap";
+import { Spinner, Container, Alert } from "react-bootstrap";
 
 const Trails = () => {
 	// Instantiate context
-	const { trails, loading } = useContext(HikingContext);
+	const { trails, errors, alert, loading } = useContext(HikingContext);
 
 	if (loading) {
 		return (
@@ -18,7 +18,18 @@ const Trails = () => {
 					animation="border"
 					style={{ margin: "auto", display: "block" }}
 					className="mt-4"
+					variant="light"
 				></Spinner>
+			</Container>
+		);
+	} else if (alert) {
+		return (
+			<Container>
+				{errors.map((error, idx) => (
+					<Alert key={idx} variant="danger">
+						{error}
+					</Alert>
+				))}
 			</Container>
 		);
 	} else {

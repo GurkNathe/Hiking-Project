@@ -31,32 +31,34 @@ function Search({ searchFunction }) {
 	const onChange = (e) => setText(e.target.value);
 
 	return (
-		<FormGroup className="m-0 d-flex justify-content-center">
-			<Form onSubmit={onSubmit} className="w-75">
-				<InputGroup>
-					<FormControl
-						type="text"
-						placeholder="Enter an address, zipcode, or location..."
-						onChange={onChange}
-						value={text}
-						style={{
-							borderBottomRightRadius: "0",
-							borderTopRightRadius: "0",
-						}}
-					></FormControl>
-					<Button
-						variant="primary"
-						onClick={onSubmit}
-						style={{
-							borderBottomLeftRadius: "0",
-							borderTopLeftRadius: "0",
-						}}
-					>
-						<FaSearch className="align-center mb-1"></FaSearch>
-					</Button>
-				</InputGroup>
-			</Form>
-		</FormGroup>
+		<Container>
+			<FormGroup className="m-0 d-flex justify-content-center">
+				<Form onSubmit={onSubmit} className="w-100">
+					<InputGroup>
+						<FormControl
+							type="text"
+							placeholder="Enter an address, zipcode, or location..."
+							onChange={onChange}
+							value={text}
+							style={{
+								borderBottomRightRadius: "0",
+								borderTopRightRadius: "0",
+							}}
+						></FormControl>
+						<Button
+							variant="primary"
+							onClick={onSubmit}
+							style={{
+								borderBottomLeftRadius: "0",
+								borderTopLeftRadius: "0",
+							}}
+						>
+							<FaSearch className="align-center mb-1"></FaSearch>
+						</Button>
+					</InputGroup>
+				</Form>
+			</FormGroup>
+		</Container>
 	);
 }
 

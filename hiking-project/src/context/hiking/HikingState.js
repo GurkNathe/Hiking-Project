@@ -6,7 +6,13 @@ import HikingContext from "./hikingContext";
 
 import sortByHaversine from "../../scripts/hikeDataDistanceSort";
 
-import { GET_TRAILS, GET_TRAIL, SET_LOADING } from "../types";
+import {
+	GET_TRAILS,
+	GET_TRAIL,
+	SET_LOADING,
+	SET_ALERT,
+	CLEAR_ALERT,
+} from "../types";
 
 // TODO - use import syntax
 require("dotenv").config({ path: "../../../.env" });
@@ -24,7 +30,9 @@ const HikingState = (props) => {
 	const initialState = {
 		trails: [],
 		trail: {},
+		errors: ["hidden error today"],
 		loading: false,
+		alert: false,
 	};
 
 	const [state, dispatch] = useReducer(HikingReducer, initialState);
@@ -33,9 +41,13 @@ const HikingState = (props) => {
 	// Import Trails JSON file
 	let trails_JSON = require("../../scripts/trails.json");
 
+	// index where data is retrieved from array
+	let pointer = 0;
+
 	// Get trails from database
 	const getTrails = async (query) => {
 		setLoading();
+		clearAlert();
 
 		try {
 			//encodes address searched (for format reasons)
@@ -52,10 +64,14 @@ const HikingState = (props) => {
 			// Invoke sortByHaversine and return an array of sorted hikes.
 			sortedHikes = sortByHaversine(trails_JSON, lat, lng);
 
-			// get data
-			const data = sortedHikes.slice(0, 20);
+			// slice data from sorted hikes
+			const data = sortedHikes.slice(pointer, pointer + 20);
 
 			// TODO eventually -- load more data when bottom of page reached
+			pointer += 20;
+
+			// --- ERROR CHECKS TO IMPLEMENT ---
+			// If latitude and longitude not within WA geometrical bounds, throw error.
 
 			// dispatch GET_TRAILS to reducer with data
 			dispatch({
@@ -63,7 +79,7 @@ const HikingState = (props) => {
 				payload: data,
 			});
 		} catch (error) {
-			console.log(error);
+			setAlert([error.message]);
 		}
 	};
 
@@ -87,15 +103,25 @@ const HikingState = (props) => {
 	// Set loading
 	const setLoading = () => dispatch({ type: SET_LOADING });
 
+	// Set alert
+	const setAlert = (alert) => dispatch({ type: SET_ALERT, payload: alert });
+
+	// Clear alert
+	const clearAlert = () => dispatch({ type: CLEAR_ALERT });
+
 	return (
 		<HikingContext.Provider
 			value={{
 				trails: state.trails,
 				trail: state.trail,
 				loading: state.loading,
+				alert: state.alert,
+				errors: state.errors,
 				getTrails,
 				getTrail,
 				setLoading,
+				setAlert,
+				clearAlert,
 			}}
 		>
 			{props.children}
