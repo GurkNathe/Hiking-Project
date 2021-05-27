@@ -3,10 +3,11 @@ import { useParams } from "react-router-dom";
 
 // Components
 import HikingContext from "../context/hiking/hikingContext";
-import ReturnButton from "../components/ReturnButton";
+import ReturnButton from "../components/trailPageComponents/TrailReturn";
+import TrailCarousel from "../components/trailPageComponents/TrailCarousel";
 
 // React-Bootstrap components
-import { Container, Row, Col, Carousel, Button } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 
 const Trail = () => {
 	// Instantiate context
@@ -15,6 +16,13 @@ const Trail = () => {
 
 	// useParams retrieves the trail name from the URL parameters.
 	let { param } = useParams();
+
+	// Image URLs to be passed into TrailCarousel component
+	let images = [
+		"https://picsum.photos/id/10/600/200",
+		"https://picsum.photos/id/10/600/200",
+		"https://picsum.photos/id/10/600/200",
+	];
 
 	// On mount, calls getTrail with the param of the hike in the url.
 	useEffect(() => {
@@ -43,64 +51,54 @@ const Trail = () => {
 		const highestPoint = elevation["Highest Point"] ?? "N/A";
 		const gain = elevation["Gain"] ?? "N/A";
 
-		// TODO - handle length not displaying properly
-
 		return (
-			<Container className="position-relative">
-				<Row className="">
-					<Col xs={6}>
+			<Container
+				className="p-4 border-primary"
+				style={{
+					backgroundColor: "rgba(250,250,250, 1)",
+					maxHeight: "100vh",
+					height: "100vh",
+				}}
+			>
+				<Row className="mt-2 mb-4">
+					<Col xs={12}>
 						<h1>{name}</h1>
-					</Col>
-					<Col className="d-flex justify-content-end">
-						<Col className="d-flex-inline text-right">
-							<span>Length</span> <br />
-							<span style={{ fontWeight: "bold" }}>{length}</span>
-						</Col>
-						<Col className="d-flex-inline text-right">
-							<span>Highest Point</span> <br />
-							<span style={{ fontWeight: "bold" }}>{highestPoint}</span>
-						</Col>
-						<Col className="d-flex-inline text-right">
-							<span>Gain</span> <br />
-							<span style={{ fontWeight: "bold" }}>{gain}</span>
-						</Col>
 					</Col>
 				</Row>
 
-				<Carousel className="mt-4 mb-4" interval={null}>
-					<Carousel.Item>
-						<img
-							className="d-block w-100"
-							src="https://picsum.photos/id/10/500/200"
-						></img>
-					</Carousel.Item>
-					<Carousel.Item>
-						<img
-							className="d-block w-100"
-							src="https://picsum.photos/id/10/500/200"
-						></img>
-					</Carousel.Item>
-					<Carousel.Item>
-						<img
-							className="d-block w-100"
-							src="https://picsum.photos/id/10/500/200"
-						></img>
-					</Carousel.Item>
-				</Carousel>
+				<TrailCarousel images={images}></TrailCarousel>
 
 				<Row>
-					<Col xs={8} style={{ color: "#ffffff" }}>
-						Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum est
-						beatae ducimus ab, doloremque quasi facere fugiat architecto sit,
-						reprehenderit illo eligendi blanditiis, quod eveniet. Itaque illo
-						facilis enim tempore possimus incidunt minus earum quae magni
-						voluptatum, quis in vitae eos ab? Quidem ullam, accusantium, maxime
-						laborum earum quod, recusandae voluptate perferendis quas id optio
-						quo quam rerum. Quas eos debitis id, corporis fugit quasi vero neque
-						minima ipsa. Nesciunt autem, explicabo hic, neque reiciendis
-						perferendis quaerat consectetur saepe voluptatum quasi sequi id.
-						Dolore atque quam, ea est architecto, voluptatibus incidunt tenetur
-						culpa quos, autem sit sed delectus iure molestias.
+					<Col xs={8}>
+						<Col className="d-flex justify-content-end p-0">
+							<Col className="d-flex-inline text-left p-0">
+								<span>Length</span> <br />
+								<span style={{ fontWeight: "bold" }}>{length}</span>
+							</Col>
+							<Col className="d-flex-inline text-left p-0">
+								<span>Highest Point</span> <br />
+								<span style={{ fontWeight: "bold" }}>{highestPoint}</span>
+							</Col>
+							<Col className="d-flex-inline text-left p-0">
+								<span>Gain</span> <br />
+								<span style={{ fontWeight: "bold" }}>{gain}</span>
+							</Col>
+						</Col>
+
+						<span>
+							Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia
+							ab quidem dignissimos dolore esse aspernatur, provident ut magni.
+							Doloribus id dolorum facere eligendi cum, dignissimos, voluptatum
+							vel ex harum nisi doloremque maxime enim repudiandae? Pariatur,
+							quae dolore recusandae, qui ullam ipsam asperiores reiciendis
+							laudantium sequi nostrum, tempora ratione quo voluptate! Nesciunt
+							dignissimos distinctio itaque quas, qui est sit earum culpa eaque
+							tempora voluptates. Molestiae laboriosam atque dicta hic aliquam
+							qui veritatis perferendis deserunt, voluptates iusto accusamus!
+							Natus facilis architecto quibusdam adipisci excepturi illo odio
+							recusandae quidem voluptates, cum nam incidunt reiciendis
+							voluptate ut pariatur, assumenda, nihil ab. Illum, fuga facere.
+						</span>
 					</Col>
 
 					<Col style={{ alignItems: "stretch" }}>
