@@ -58,6 +58,9 @@ const HikingState = (props) => {
 				`https://maps.googleapis.com/maps/api/geocode/json?address=${encodedAddress}&key=${googleApiKey}`
 			);
 
+			if (res.data.status === "ZERO_RESULTS")
+				throw new Error("No results found. Try a different location.");
+
 			// Destructure latitude and longitude from JSON
 			const { lat, lng } = res.data.results[0].geometry.location;
 

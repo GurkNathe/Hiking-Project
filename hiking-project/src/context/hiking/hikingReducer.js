@@ -35,7 +35,6 @@ const hikingReducer = (state, action) => {
 		case CLEAR_ALERT:
 			return {
 				...state,
-				loading: false,
 				alert: false,
 				errors: [],
 			};

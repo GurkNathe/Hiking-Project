@@ -11,7 +11,17 @@ const Trails = () => {
 	// Instantiate context
 	const { trails, errors, alert, loading } = useContext(HikingContext);
 
-	if (loading) {
+	if (alert) {
+		return (
+			<Container>
+				{errors.map((error, idx) => (
+					<Alert key={idx} variant="danger">
+						{error}
+					</Alert>
+				))}
+			</Container>
+		);
+	} else if (loading) {
 		return (
 			<Container>
 				<Spinner
@@ -20,16 +30,6 @@ const Trails = () => {
 					className="mt-4"
 					variant="light"
 				></Spinner>
-			</Container>
-		);
-	} else if (alert) {
-		return (
-			<Container>
-				{errors.map((error, idx) => (
-					<Alert key={idx} variant="danger">
-						{error}
-					</Alert>
-				))}
 			</Container>
 		);
 	} else {
