@@ -27,12 +27,23 @@ const App = () => {
 						overflow: "auto",
 					}}
 				>
-					<HikingNavbar></HikingNavbar>
-					<Switch>
-						<Route exact path="/" component={Home}></Route>
-						<Route exact path="/about" component={About}></Route>
-						<Route exact path="/trails/:param" component={Trail}></Route>
-					</Switch>
+					<div style={{
+						position: "-webkit-sticky",
+						position: "sticky",
+						top: "0",
+						zIndex: "1"
+					}}>
+						<HikingNavbar></HikingNavbar>
+					</div>
+					<div style={{
+						zIndex: "-1"
+					}}>
+						<Switch>
+							<Route exact path="/" component={Home}></Route>
+							<Route exact path="/about" component={About}></Route>
+							<Route exact path="/trails/:param" component={Trail}></Route>
+						</Switch>
+					</div>
 				</div>
 			</Router>
 		</HikingState>
