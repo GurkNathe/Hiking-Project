@@ -30,7 +30,7 @@ const HikingState = (props) => {
 	const initialState = {
 		trails: [],
 		trail: {},
-		errors: ["hidden error today"],
+		errors: [],
 		loading: false,
 		alert: false,
 	};

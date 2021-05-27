@@ -17,33 +17,13 @@ const App = () => {
 	return (
 		<HikingState>
 			<Router>
-				<div
-					className="bg_image"
-					style={{
-						backgroundImage: `url(https://wallpaperaccess.com/full/1216331.jpg)`,
-						backgroundSize: "cover",
-						maxHeight: "100vh",
-						height: "100vh",
-						overflow: "auto",
-					}}
-				>
-					<div style={{
-						position: "-webkit-sticky",
-						position: "sticky",
-						top: "0",
-						zIndex: "1"
-					}}>
-						<HikingNavbar></HikingNavbar>
-					</div>
-					<div style={{
-						zIndex: "-1"
-					}}>
-						<Switch>
-							<Route exact path="/" component={Home}></Route>
-							<Route exact path="/about" component={About}></Route>
-							<Route exact path="/trails/:param" component={Trail}></Route>
-						</Switch>
-					</div>
+				<div className="bg_image">
+					<HikingNavbar></HikingNavbar>
+					<Switch>
+						<Route exact path="/" component={Home}></Route>
+						<Route exact path="/about" component={About}></Route>
+						<Route exact path="/trails/:param" component={Trail}></Route>
+					</Switch>
 				</div>
 			</Router>
 		</HikingState>

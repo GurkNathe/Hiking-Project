@@ -16,12 +16,14 @@ const Home = () => {
 
 	return (
 		<div>
-			<div style={{
+			<div
+				style={{
 					position: "-webkit-sticky",
 					position: "sticky",
 					top: "3.52rem",
-					zIndex: "1"
-				}}>
+					zIndex: "1",
+				}}
+			>
 				<BackdropFilter
 					className="bluredForm"
 					filter={"blur(10px)"}

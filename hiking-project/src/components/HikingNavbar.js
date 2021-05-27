@@ -6,7 +6,7 @@ import { FaTree } from "react-icons/fa";
 
 function HikingNavbar() {
 	return (
-		<Navbar bg="dark" variant="dark">
+		<Navbar bg="dark" variant="dark" sticky="top">
 			<FaTree
 				className="d-inline-block align-center"
 				style={{ width: "2em", height: "2em" }}
