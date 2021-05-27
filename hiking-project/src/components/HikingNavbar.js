@@ -8,7 +8,7 @@ function HikingNavbar() {
 	return (
 		<Navbar bg="dark" variant="dark" sticky="top">
 			<FaTree
-				className="d-inline-block align-center"
+				className="d-inline-block align-center mr-2"
 				style={{ width: "2em", height: "2em" }}
 				color="white"
 			></FaTree>

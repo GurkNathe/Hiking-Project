@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 
 // Components
 import HikingContext from "../context/hiking/hikingContext";
+import ReturnButton from "../components/ReturnButton";
 
 // React-Bootstrap components
 import { Container, Row, Col, Carousel, Button } from "react-bootstrap";
@@ -45,7 +46,7 @@ const Trail = () => {
 		// TODO - handle length not displaying properly
 
 		return (
-			<Container>
+			<Container className="position-relative">
 				<Row className="">
 					<Col xs={6}>
 						<h1>{name}</h1>
@@ -88,7 +89,7 @@ const Trail = () => {
 				</Carousel>
 
 				<Row>
-					<Col xs={8} style={{color:"#ffffff"}}>
+					<Col xs={8} style={{ color: "#ffffff" }}>
 						Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum est
 						beatae ducimus ab, doloremque quasi facere fugiat architecto sit,
 						reprehenderit illo eligendi blanditiis, quod eveniet. Itaque illo
@@ -114,7 +115,9 @@ const Trail = () => {
 						</Button>
 					</Col>
 				</Row>
-				<Row style={{paddingBottom:"25px"}}></Row>
+				<Row style={{ paddingBottom: "25px" }}></Row>
+
+				<ReturnButton></ReturnButton>
 			</Container>
 		);
 	} else {
