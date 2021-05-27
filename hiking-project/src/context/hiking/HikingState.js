@@ -55,7 +55,7 @@ const HikingState = (props) => {
 
 			// Make request to Google Maps API
 			const res = await axios.get(
-				`https://maps.googleapis.com/maps/api/geocode/json?address=${encodedAddress}&key=AIzaSyCA6JrqRskg3S0_4l9-IxsfniZr3tLZiIk`
+				`https://maps.googleapis.com/maps/api/geocode/json?address=${encodedAddress}&key=${googleApiKey}`
 			);
 
 			if (res.data.status === "ZERO_RESULTS")
