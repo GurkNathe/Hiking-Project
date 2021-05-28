@@ -12,7 +12,7 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 const Trail = () => {
 	// Instantiate context
 	const hikingContext = useContext(HikingContext);
-	const { getTrail, loading } = hikingContext;
+	const { getTrail, loading, alert, setAlert } = hikingContext;
 
 	// useParams retrieves the trail name from the URL parameters.
 	let { param } = useParams();
@@ -26,6 +26,9 @@ const Trail = () => {
 
 	// On mount, calls getTrail with the param of the hike in the url.
 	useEffect(() => {
+		// Scroll to the top of the page.
+		window.scrollTo(0, 0);
+
 		if (param) {
 			try {
 				getTrail(param);
@@ -33,15 +36,18 @@ const Trail = () => {
 				// TODO - Error Handling
 				// Trail is not in database.
 				// Reroute user to <trail not found> page
-				console.error(error.message);
+				setAlert(error.message);
 			}
 		} else {
-			console.error("No URL parameters given...");
+			setAlert("No URL parameters given...");
 			// Route user to <trail not found> page
 		}
 	}, []);
 
-	if (!loading && !isEmpty(hikingContext.trail)) {
+	if (alert) {
+		// TODO - route user to <trail not found> page
+		return <h1>YOU FUCKED UP</h1>;
+	} else if (!loading && !isEmpty(hikingContext.trail)) {
 		// const { elevation, length, name, url, coordinates, features } =
 		// 	hikingContext.trail;
 
@@ -53,14 +59,14 @@ const Trail = () => {
 
 		return (
 			<Container
-				className="p-4 border-primary"
+				className="p-4 border-left border-right"
 				style={{
 					backgroundColor: "rgba(250,250,250, 1)",
 					maxHeight: "100vh",
 					height: "100vh",
 				}}
 			>
-				<Row className="mt-2 mb-4">
+				<Row className="mb-4">
 					<Col xs={12}>
 						<h1>{name}</h1>
 					</Col>
@@ -73,17 +79,25 @@ const Trail = () => {
 						<Col className="d-flex justify-content-end p-0">
 							<Col className="d-flex-inline text-left p-0">
 								<span>Length</span> <br />
-								<span style={{ fontWeight: "bold" }}>{length}</span>
+								<span style={{ fontWeight: "bold", fontSize: "large" }}>
+									{length}
+								</span>
 							</Col>
 							<Col className="d-flex-inline text-left p-0">
 								<span>Highest Point</span> <br />
-								<span style={{ fontWeight: "bold" }}>{highestPoint}</span>
+								<span style={{ fontWeight: "bold", fontSize: "large" }}>
+									{highestPoint}
+								</span>
 							</Col>
 							<Col className="d-flex-inline text-left p-0">
 								<span>Gain</span> <br />
-								<span style={{ fontWeight: "bold" }}>{gain}</span>
+								<span style={{ fontWeight: "bold", fontSize: "large" }}>
+									{gain}
+								</span>
 							</Col>
 						</Col>
+
+						<hr />
 
 						<span>
 							Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia
@@ -113,7 +127,7 @@ const Trail = () => {
 						</Button>
 					</Col>
 				</Row>
-				<Row style={{ paddingBottom: "25px" }}></Row>
+				<Row className="mb-4"></Row>
 
 				<ReturnButton></ReturnButton>
 			</Container>

@@ -1,16 +1,25 @@
 import React from "react";
 
-import { Container } from "react-bootstrap";
+import { Container, Card, Button } from "react-bootstrap";
 
 const About = () => {
 	return (
-		<Container>
-			<h1>About This App</h1>
-			<p>
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur ut
-				commodi consequuntur veritatis nobis provident et, blanditiis eaque unde
-				totam tenetur ea rerum esse illo voluptatibus at cum ex modi.
-			</p>
+		<Container className="mt-3">
+			<Card>
+				<Card.Header as="h3">About this App</Card.Header>
+				<Card.Body>
+					This application was developed to find hikes in Washington. It was
+					developed for the class CS380 - Introduction to Software Engineering
+					at Central Washington University. The contributors and source code can
+					be found in the Github repo linked below.
+				</Card.Body>
+				<a
+					href="https://github.com/GurkNathe/Hiking-Project"
+					className="pt-0 pl-3 pb-3"
+				>
+					<Button variant="primary">Github Repo</Button>
+				</a>
+			</Card>
 		</Container>
 	);
 };

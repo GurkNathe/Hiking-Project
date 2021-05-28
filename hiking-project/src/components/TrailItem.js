@@ -30,8 +30,8 @@ function TrailItem({ elevation, name, haversine, length }) {
 						{distance} Miles
 					</Card.Subtitle>
 					<Card.Text>
-						Highest Point: {elevation["Highest Point"] ?? "N/A"} <br /> Length:{" "}
-						{length ?? "N/A"}
+						Length: {length ?? "N/A"} <br /> Highest Point:{" "}
+						{elevation["Highest Point"] ?? "N/A"}
 					</Card.Text>
 				</Card.Body>
 			</Card>

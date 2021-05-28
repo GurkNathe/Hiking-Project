@@ -12,8 +12,6 @@ const Home = () => {
 	// Instantiate context
 	const { getTrails } = useContext(HikingContext);
 
-	let imageUrl = "https://wallpaperaccess.com/full/1216331.jpg";
-
 	return (
 		<div>
 			<div
