@@ -17,7 +17,14 @@ const App = () => {
 	return (
 		<HikingState>
 			<Router>
-				<div className="bg_image">
+				<div className="bg_image"
+					style={{
+						backgroundImage: `url(https://wallpaperaccess.com/full/1216331.jpg)`,
+						backgroundSize: "cover",
+						height: "100vh",
+						overflow: "auto"
+					}}
+				>
 					<HikingNavbar></HikingNavbar>
 					<Switch>
 						<Route exact path="/" component={Home}></Route>

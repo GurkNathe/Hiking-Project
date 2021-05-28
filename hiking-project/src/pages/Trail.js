@@ -63,7 +63,7 @@ const Trail = () => {
 				style={{
 					backgroundColor: "rgba(250,250,250, 1)",
 					
-					height: "100%",
+					height: window.height
 				}}
 			>
 				<ReturnButton></ReturnButton>
