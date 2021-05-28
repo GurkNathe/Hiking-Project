@@ -24,7 +24,7 @@ function Search({ searchFunction }) {
 
 		searchFunction(text);
 
-		setText("");
+		setText(text);
 	};
 
 	// Sets search bar text to current typed information
