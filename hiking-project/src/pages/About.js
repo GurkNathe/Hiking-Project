@@ -16,6 +16,8 @@ const About = () => {
 				<a
 					href="https://github.com/GurkNathe/Hiking-Project"
 					className="pt-0 pl-3 pb-3"
+					target="_blank"
+					rel="noopener noreferrer"
 				>
 					<Button variant="primary">Github Repo</Button>
 				</a>
