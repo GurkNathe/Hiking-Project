@@ -62,10 +62,12 @@ const Trail = () => {
 				className="p-4 border-left border-right"
 				style={{
 					backgroundColor: "rgba(250,250,250, 1)",
-					maxHeight: "100vh",
-					height: "100vh",
+					
+					height: "100%",
 				}}
 			>
+				<ReturnButton></ReturnButton>
+				<Row className="mb-3"></Row>
 				<Row className="mb-4">
 					<Col xs={12}>
 						<h1>{name}</h1>
@@ -127,9 +129,6 @@ const Trail = () => {
 						</Button>
 					</Col>
 				</Row>
-				<Row className="mb-4"></Row>
-
-				<ReturnButton></ReturnButton>
 			</Container>
 		);
 	} else {
