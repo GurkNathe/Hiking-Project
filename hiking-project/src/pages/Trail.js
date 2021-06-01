@@ -67,6 +67,7 @@ const Trail = () => {
 				}}
 			>
 				<ReturnButton></ReturnButton>
+
 				<Row className="mb-3"></Row>
 				<Row className="mb-4">
 					<Col xs={12}>
@@ -99,12 +100,14 @@ const Trail = () => {
 							</Col>
 						</Col>
 
+						<hr />
+
 						{features.map((feature, idx) => (
 							<Badge
 								key={idx}
 								pill
 								variant="success"
-								className="p-2 mt-3 mr-1 mb-1"
+								className="p-2 mt-1 mr-1 mb-1"
 								style={{ fontSize: "small", fontWeight: "normal" }}
 							>
 								{feature}
@@ -128,14 +131,14 @@ const Trail = () => {
 						</span>
 					</Col>
 
-					<Col style={{ alignItems: "stretch" }} className="border-left">
-						<Button variant="primary" block href="/">
+					<Col style={{ alignItems: "center" }} className="border-left">
+						<Button variant="secondary" block href="/">
 							Button 1
 						</Button>
-						<Button variant="primary" block>
+						<Button variant="secondary" block>
 							Button 2
 						</Button>
-						<Button variant="primary" block>
+						<Button variant="secondary" block>
 							Button 3
 						</Button>
 					</Col>
