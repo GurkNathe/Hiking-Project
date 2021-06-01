@@ -7,7 +7,7 @@ import ReturnButton from "../components/trailPageComponents/TrailReturn";
 import TrailCarousel from "../components/trailPageComponents/TrailCarousel";
 
 // React-Bootstrap components
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col, Button, Badge } from "react-bootstrap";
 
 const Trail = () => {
 	// Instantiate context
@@ -51,7 +51,7 @@ const Trail = () => {
 		// const { elevation, length, name, url, coordinates, features } =
 		// 	hikingContext.trail;
 
-		const { elevation, length, name } = hikingContext.trail;
+		const { elevation, length, name, features } = hikingContext.trail;
 
 		// Nullish coalescing. If left side is null or undefined, return right side
 		const highestPoint = elevation["Highest Point"] ?? "N/A";
@@ -62,8 +62,8 @@ const Trail = () => {
 				className="p-4 border-left border-right"
 				style={{
 					backgroundColor: "rgba(250,250,250, 1)",
-					
-					height: window.height
+
+					height: window.height,
 				}}
 			>
 				<ReturnButton></ReturnButton>
@@ -99,8 +99,19 @@ const Trail = () => {
 							</Col>
 						</Col>
 
-						<hr />
+						{features.map((feature, idx) => (
+							<Badge
+								key={idx}
+								pill
+								variant="success"
+								className="p-2 mt-3 mr-1 mb-1"
+								style={{ fontSize: "small", fontWeight: "normal" }}
+							>
+								{feature}
+							</Badge>
+						))}
 
+						<hr />
 						<span>
 							Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia
 							ab quidem dignissimos dolore esse aspernatur, provident ut magni.
@@ -117,7 +128,7 @@ const Trail = () => {
 						</span>
 					</Col>
 
-					<Col style={{ alignItems: "stretch" }}>
+					<Col style={{ alignItems: "stretch" }} className="border-left">
 						<Button variant="primary" block href="/">
 							Button 1
 						</Button>
