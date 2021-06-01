@@ -48,10 +48,9 @@ const Trail = () => {
 		// TODO - route user to <trail not found> page
 		return <h1>YOU FUCKED UP</h1>;
 	} else if (!loading && !isEmpty(hikingContext.trail)) {
-		// const { elevation, length, name, url, coordinates, features } =
-		// 	hikingContext.trail;
-
-		const { elevation, length, name, features } = hikingContext.trail;
+		const { elevation, length, name, features, url, coordinates } =
+			hikingContext.trail;
+		const { lat, lon } = coordinates;
 
 		// Nullish coalescing. If left side is null or undefined, return right side
 		const highestPoint = elevation["Highest Point"] ?? "N/A";
@@ -66,8 +65,6 @@ const Trail = () => {
 					height: window.height,
 				}}
 			>
-				<ReturnButton></ReturnButton>
-
 				<Row className="mb-3"></Row>
 				<Row className="mb-4">
 					<Col xs={12}>
@@ -107,8 +104,15 @@ const Trail = () => {
 								key={idx}
 								pill
 								variant="success"
-								className="p-2 mt-1 mr-1 mb-1"
-								style={{ fontSize: "small", fontWeight: "normal" }}
+								className="p-2 mt-1 mr-2 mb-1"
+								style={{
+									fontSize: "small",
+									fontWeight: "normal",
+									backgroundColor: "#fafafa",
+									color: "#428a13",
+									borderStyle: "solid",
+									borderWidth: "1px",
+								}}
 							>
 								{feature}
 							</Badge>
@@ -132,15 +136,18 @@ const Trail = () => {
 					</Col>
 
 					<Col style={{ alignItems: "center" }} className="border-left">
-						<Button variant="secondary" block href="/">
-							Button 1
+						<Button
+							variant="primary"
+							href={`https://www.google.com/maps?q=${lat},${lon}`}
+							target="_blank"
+							block
+						>
+							Open in Google Maps
 						</Button>
-						<Button variant="secondary" block>
-							Button 2
+						<Button variant="primary" href={url} target="_blank" block>
+							Learn More at WTA
 						</Button>
-						<Button variant="secondary" block>
-							Button 3
-						</Button>
+						<ReturnButton></ReturnButton>
 					</Col>
 				</Row>
 			</Container>

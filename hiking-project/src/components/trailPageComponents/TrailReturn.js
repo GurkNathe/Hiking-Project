@@ -9,12 +9,17 @@ const ReturnButton = () => {
 		<Fragment>
 			<Link to="/">
 				<Button
-					variant="primary"
+					variant="dark"
 					size="sm"
-					className="d-flex align-items-center"
+					className="d-flex align-items-center justify-content-center mt-2 mb-2"
+					block
 				>
-					<FaAngleDoubleLeft></FaAngleDoubleLeft>{" "}
-					<span className="p-1">Return to Search Results</span>
+					<FaAngleDoubleLeft
+						style={{ width: "1.25em", height: "1.25em" }}
+					></FaAngleDoubleLeft>{" "}
+					<span className="p-1" style={{ fontSize: "medium" }}>
+						Return to Search Results
+					</span>
 				</Button>
 			</Link>
 		</Fragment>
