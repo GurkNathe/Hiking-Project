@@ -8,6 +8,7 @@ import {
 	FormControl,
 	Button,
 	InputGroup,
+	Dropdown,
 } from "react-bootstrap";
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -17,6 +18,9 @@ import { FaSearch } from "react-icons/fa";
 function Search({ searchFunction }) {
 	// React Hook used to set text value to a constant
 	const [text, setText] = useState("");
+	var [checks, setChecks] = useState("");
+
+	checks = { isTest: false};
 
 	// Calls the prop.search function with text in the form.
 	const onSubmit = (e) => {
@@ -30,11 +34,17 @@ function Search({ searchFunction }) {
 	// Sets search bar text to current typed information
 	const onChange = (e) => setText(e.target.value);
 
+	const onChangeTest = () => {
+		console.log(checks.isTest)
+		checks.isTest = !checks.isTest
+		console.log(checks.isTest)
+	};
+
 	return (
 		<Container>
-			<FormGroup className="m-0 d-flex justify-content-center">
+			<Form.Group className="m-0 d-flex justify-content-center">
 				<Form onSubmit={onSubmit} className="w-100">
-					<InputGroup>
+					<InputGroup style={{}}>
 						<FormControl
 							type="text"
 							placeholder="Enter an address, zipcode, or location..."
@@ -43,8 +53,30 @@ function Search({ searchFunction }) {
 							style={{
 								borderBottomRightRadius: "0",
 								borderTopRightRadius: "0",
+								boxShadow: "none",
 							}}
 						></FormControl>
+						<Dropdown>
+							<Dropdown.Toggle variant="success" id="dropdown-basic" 
+								style={{
+									color: "black",
+									backgroundColor: "white",
+									borderColor: "lightgrey",
+									borderRadius: "0",
+  									boxShadow: "none",
+									width: "150px",
+								}}
+							>
+								Features
+							</Dropdown.Toggle>
+							<Dropdown.Menu>
+								<Form.Group controlId="formBasicCheckbox" style={{paddingLeft:"10px"}}>
+									<Form.Check type="checkbox" label="Test" onClick={onChangeTest}/>
+									<Form.Check type="checkbox" label="Test" onClick={onChangeTest}/>
+									<Form.Check type="checkbox" label="Test" onClick={onChangeTest}/>
+								</Form.Group>
+							</Dropdown.Menu>
+						</Dropdown>
 						<Button
 							variant="primary"
 							onClick={onSubmit}
@@ -57,7 +89,7 @@ function Search({ searchFunction }) {
 						</Button>
 					</InputGroup>
 				</Form>
-			</FormGroup>
+			</Form.Group>
 		</Container>
 	);
 }

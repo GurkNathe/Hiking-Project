@@ -11,7 +11,7 @@ import Trails from "../components/Trails";
 const Home = () => {
 	// Instantiate context
 	const { getTrails } = useContext(HikingContext);
-
+	
 	return (
 		<div>
 			<div
