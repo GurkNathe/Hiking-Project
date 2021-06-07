@@ -60,8 +60,7 @@ const HikingState = (props) => {
 
 			if (res.data.status === "ZERO_RESULTS")
 				throw new Error("No results found. Try a different location.");
-			
-			console.log(res.data)
+
 			// Destructure latitude and longitude from JSON
 			const { lat, lng } = res.data.results[0].geometry.location;
 
@@ -80,7 +79,7 @@ const HikingState = (props) => {
 			// dispatch GET_TRAILS to reducer with data
 			dispatch({
 				type: GET_TRAILS,
-				payload: data
+				payload: data,
 			});
 		} catch (error) {
 			setAlert([error.message]);
@@ -97,7 +96,7 @@ const HikingState = (props) => {
 		if (data) {
 			dispatch({
 				type: GET_TRAIL,
-				payload: data, 
+				payload: data,
 			});
 		} else {
 			throw new Error("Trail not found in database!");

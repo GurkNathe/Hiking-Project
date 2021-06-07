@@ -44,7 +44,7 @@ function Search({ searchFunction }) {
 		<Container>
 			<Form.Group className="m-0 d-flex justify-content-center">
 				<Form onSubmit={onSubmit} className="w-100">
-					<InputGroup style={{}}>
+					<InputGroup>
 						<FormControl
 							type="text"
 							placeholder="Enter an address, zipcode, or location..."
